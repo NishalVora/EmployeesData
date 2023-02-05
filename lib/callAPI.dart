@@ -9,12 +9,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'models/userData.dart';
 import 'dart:async';
 
-class callAPI extends StatefulWidget {
+class callAPIScreen extends StatefulWidget {
   @override
-  State<callAPI> createState() => _callAPIState();
+  State<callAPIScreen> createState() => _callAPIScreenState();
 }
 
-class _callAPIState extends State<callAPI> {
+class _callAPIScreenState extends State<callAPIScreen> {
   List<Result> userData = [];
 
   bool isFirst = true;
@@ -113,9 +113,17 @@ class _callAPIState extends State<callAPI> {
                 isFirst &&
                 SharedPrefHelper.instance
                     .getBool(SharedPrefHelper.IS_OLD_DATA_EMPTY)
-            ? Center(
-                child: Text("No records found!"),
-              )
+            ? Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                    child: Text("No local records found!\n"),
+                  ),
+                Center(
+                  child: Text("Please turn on internet once to store data locally!\n"),
+                ),
+              ],
+            )
             : StreamBuilder(
                 stream: AppDatabase().watchAllOrder(),
                 builder: (context, AsyncSnapshot<List<Order>> snapshot) {
