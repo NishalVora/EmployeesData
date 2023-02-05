@@ -38,8 +38,9 @@ dependencies:
   dio: ^4.0.6
   moor_flutter:
   path_provider:
-  sqlite3_flutter_libs:
-  get_it:
+  connectivity_plus: ^2.0.2
+  shared_preferences: ^2.0.6
+
 
 dev_dependencies:
   flutter_test:
